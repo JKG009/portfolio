@@ -1,0 +1,47 @@
+:root {
+  /* Loading Page */
+  --dark-navy: #020c1b;
+  /* Main BG */
+  --navy: #0a192f;
+  /* Containers */
+  --light-navy: #112240;
+  /* Navbar Links Container */
+  --lightest-navy: #233554;
+  /* Box shadow */
+  --navy-shadow: rgba(2, 12, 27, 0.7);
+  /* Text */
+  --white: #e6f1ff;
+  --darker-white: #ccd6f6;
+  --darkest-white: #a8b2d1;
+  --grey: #8892b0;
+  --dark-grey: #495670;
+  /* Bold */
+  --title: #949bff;
+  --orange-tint: rgba(255, 197, 72, 0.7);
+
+  --font-sans: "Calibre", "Inter", "San Francisco", "SF Pro Text", -apple-system,
+    system-ui, sans-serif;
+  --font-mono: "SF Mono", "Fira Code", "Fira Mono", "Roboto Mono", monospace;
+
+  --fs-xxs: 12px;
+  --fs-xs: 14px;
+  --fs-sm: 16px;
+  --fs-md: 18px;
+  --fs-lg: 20px;
+  --fs-xl: 22px;
+  --fs-xxl: 24px;
+  --fs-heading: 32px;
+
+  --nav-height: 70px;
+  --max-width: 1400px;
+  --border-radius: 4px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
