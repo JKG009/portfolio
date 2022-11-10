@@ -1,8 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import useScrollDirection from "../hooks/useScrollDirection";
 
 const Nav = styled.div`
   background: var(--navy);
+  z-index: 20;
+  position: sticky;
+  top: 0px;
+  height: var(--nav-height);
+  transition-property: all;
+  transition-duration: 500ms;
+  ${({ scrollDown }) => scrollDown && `top: -10rem;`}
 `;
 
 const NavContainer = styled.div`
@@ -80,7 +88,7 @@ const NavToggle = styled.div`
 
 const NavItems = styled.div`
   @media (max-width: 700px) {
-    position: absolute;
+    position: fixed;
     top: 0;
     display: flex;
     flex-direction: column;
@@ -92,7 +100,6 @@ const NavItems = styled.div`
     transition: all 0.45s;
     justify-content: center;
     align-items: center;
-
     transform: ${({ isOpen }) => isOpen && "translateX(0)"};
   }
 `;
@@ -132,9 +139,18 @@ const NavBurger = styled.div`
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const scrollDirection = useScrollDirection();
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "visible";
+    }
+  }, [isOpen]);
 
   return (
-    <Nav>
+    <Nav scrollDown={scrollDirection === "down"}>
       <NavContainer>
         <NavToggle isOpen={isOpen} onClick={() => setIsOpen(!isOpen)}>
           <NavBurger isOpen={isOpen}></NavBurger>
