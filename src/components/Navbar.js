@@ -3,7 +3,7 @@ import styled from "styled-components";
 import useScrollDirection from "../hooks/useScrollDirection";
 
 const Nav = styled.div`
-  background: var(--navy);
+  background: rgba(10, 25, 47, 0.9);
   z-index: 20;
   position: sticky;
   top: 0px;
@@ -27,6 +27,7 @@ const NavLogo = styled.a`
   font-weight: 700;
   font-size: var(--fs-heading);
   margin: 25px;
+  padding: 5px;
   color: var(--title);
 `;
 
@@ -35,6 +36,7 @@ const NavLinks = styled.a`
   font-size: var(--fs-md);
   text-decoration: none;
   margin: 25px;
+  padding: 5px;
   position: relative;
   opacity: 0.85;
 

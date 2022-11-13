@@ -1,16 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 
-const Landing = styled.div`
-  position: relative;
-  background-color: var(--navy);
-  height: 100vh;
-  padding-bottom: 5vh;
-`;
-
 const LandingContainer = styled.section`
   margin: auto;
-  height: 100%;
+  margin-bottom: 100px;
+  height: 100vh;
   max-width: var(--max-width);
   width: 100%;
   padding: 0 10vw 0 10vw;
@@ -43,18 +37,20 @@ const LandingContainer = styled.section`
     color: var(--darkest-white);
     font-size: clamp(var(--fs-xxs), var(--fs-md), var(--fs-lg));
   }
+
+  @media (max-width: 785px) {
+    padding: 0;
+  }
 `;
 
 const Hero = () => {
   return (
-    <Landing>
       <LandingContainer>
         <h1>My name is</h1>
         <h2>Geoffrey Lee.</h2>
         <h3>Welcome to my page!</h3>
         <h4>I am a self-taught Frontend Web Developer.</h4>
       </LandingContainer>
-    </Landing>
   );
 };
 
