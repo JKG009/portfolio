@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import useScrollDirection from "../hooks/useScrollDirection";
+import useScrollDirection from "../../hooks/useScrollDirection";
 
 const Nav = styled.div`
   background: rgba(10, 25, 47, 0.9);
@@ -8,8 +8,7 @@ const Nav = styled.div`
   position: sticky;
   top: 0px;
   height: var(--nav-height);
-  transition-property: all;
-  transition-duration: 500ms;
+  transition: var(--transition-ease);
   ${({ scrollDown }) => scrollDown && `top: -10rem;`}
 `;
 
@@ -58,7 +57,7 @@ const NavLinks = styled.a`
     width: 0;
     height: 2px;
     background: var(--title);
-    transition: all 0.45s;
+    transition: var(--transition-ease);
   }
 
   :hover::before,
@@ -99,7 +98,7 @@ const NavItems = styled.div`
     width: 60%;
     height: 100%;
     transform: translateX(-100%);
-    transition: all 0.45s;
+    transition: var(--transition-ease);
     justify-content: center;
     align-items: center;
     transform: ${({ isOpen }) => isOpen && "translateX(0)"};
@@ -112,7 +111,7 @@ const NavBurger = styled.div`
     width: 32px;
     height: 2px;
     background: ${({ isOpen }) => (isOpen ? "transparent" : "var(--title)")};
-    transition: all 0.45s ease-in-out;
+    transition: var(--transition-ease-in-out);
     transform: ${({ isOpen }) => isOpen && "translateX(-40px)"};
 
     ::before,
@@ -122,7 +121,7 @@ const NavBurger = styled.div`
       height: 2px;
       background: var(--title);
       border-radius: 2px;
-      transition: all 0.45s ease-in-out;
+      transition: var(--transition-ease-in-out);
     }
 
     ::before {

@@ -1,14 +1,19 @@
 import React from "react";
 import styled from "styled-components";
-import { frontSkills, otherSkills } from "../config";
+import { frontSkills, otherSkills } from "../../config";
 
 const AboutContainer = styled.section`
   max-width: var(--max-width);
   margin: auto;
+  padding: 100px 0;
+  //TODO: padding
+  padding: 100px 80px;
 
   h2 {
     color: var(--darker-white);
     font-size: clamp(26px, 5vw, var(--fs-heading));
+    margin-bottom: 30px;
+
     :after {
       content: "";
       display: block;
@@ -29,6 +34,7 @@ const AboutContainer = styled.section`
   }
 
   @media (max-width: 1000px) {
+    padding: 60px 0;
     h2 {
       :after {
         width: calc(100vw - 50vw);
@@ -92,7 +98,7 @@ const AboutSkillsContainer = styled.div`
     width: 100%;
     max-width: 700px;
     padding: 0;
-    margin: 1rem auto;
+    margin: 1rem auto 0;
 
     h3 {
       padding: 1rem 2rem;
@@ -120,7 +126,8 @@ const AboutSkillLogo = styled.div`
 
   p {
     font-size: var(--fs-xs);
-    color: var(--darker-white);
+    font-weight: bold;
+    color: var(--grey);
   }
 
   @media (max-width: 375px) {
