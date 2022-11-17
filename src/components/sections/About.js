@@ -33,7 +33,7 @@ const AboutContainer = styled.section`
     color: var(--grey);
   }
 
-  @media (max-width: 1000px) {
+  @media (max-width: 1024px) {
     padding: 60px 0;
     h2 {
       :after {
@@ -69,7 +69,7 @@ const AboutTextContainer = styled.div`
   height: 100%;
   padding: 0.5rem 1rem;
 
-  @media (max-width: 1000px) {
+  @media (max-width: 1024px) {
     width: 100%;
   }
 
@@ -94,7 +94,7 @@ const AboutSkillsContainer = styled.div`
     color: var(--darkest-white);
   }
 
-  @media (max-width: 1000px) {
+  @media (max-width: 1024px) {
     width: 100%;
     max-width: 700px;
     padding: 0;

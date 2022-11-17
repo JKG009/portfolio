@@ -1,16 +1,11 @@
 import { Navbar, Hero, About, Projects } from "./components/sections";
+import "./styles/app.css";
 
 function App() {
   return (
     <>
       <Navbar />
-      <div
-        style={{
-          position: "relative",
-          top: "-70px",
-          padding: "1rem 2rem",
-        }}
-      >
+      <div className="section-container">
         <Hero />
         <About />
         <Projects />

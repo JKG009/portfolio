@@ -6,11 +6,12 @@
   /* Main BG */
   --navy: #0a192f;
   /* Containers */
+  --slight-navy:#051530;
   --light-navy: #112240;
   /* Navbar Links Container */
   --lightest-navy: #233554;
   /* Box shadow */
-  --navy-shadow: rgba(2, 12, 27, 0.7);
+  --navy-shadow: rgba(5, 21, 48, 0.7);
   /* Text */
   --white: #e6f1ff;
   --darker-white: #ccd6f6;
@@ -40,6 +41,7 @@
   --container-border-radius: 10px;
 
   --transition-ease: all 0.5s ease;
+  --transition-ease-faster: all 0.2s ease;
   --transition-ease-in-out: all 0.5s ease-in-out;
 }
 

@@ -1,0 +1,17 @@
+.section-container {
+  min-width: 320px;
+  position: relative;
+  top: -70px;
+  padding: 1rem 2rem;
+}
+
+@media (max-width: 425px) {
+  .section-container {
+    padding: 0.8rem 1.6rem;
+  }
+}
+@media (max-width: 375px) {
+  .section-container {
+    padding: 0.4rem 0.8rem;
+  }
+}

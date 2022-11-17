@@ -23,6 +23,7 @@ const ProjectsContainer = styled.section`
       background-color: var(--lightest-navy);
     }
   }
+
   @media (max-width: 1000px) {
     padding: 60px 0;
     h2 {
@@ -60,17 +61,19 @@ const ProjectContainer = styled.div`
   div {
     grid-row: 1/2;
   }
+
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 const ProjectImg = styled.a`
-  height: 100%;
-  grid-column: 6/-2;
-  ${({ alignRight }) => alignRight && "grid-column: 2/6;"}
+  grid-column: 6/-1;
+  ${({ alignRight }) => alignRight && "grid-column: 1/6;"}
   overflow: hidden;
   border-radius: var(--border-radius);
   transition: var(--transition-ease);
   opacity: 0.4;
-
   :hover {
     opacity: 0.8;
   }
@@ -80,10 +83,18 @@ const ProjectImg = styled.a`
     height: 100%;
     object-fit: cover;
   }
+
+  @media (max-width: 600px) {
+    opacity: 0.8;
+  }
+
+  @media (max-width: 1024px) {
+    grid-column: 5/-1;
+    ${({ alignRight }) => alignRight && "grid-column: 1/7;"}
+  }
 `;
 
 const ProjectDescriptionContainer = styled.div`
-  z-index: 2;
   height: 80%;
   margin: auto 0;
   grid-column: 2/7;
@@ -92,27 +103,58 @@ const ProjectDescriptionContainer = styled.div`
   flex-direction: column;
   justify-content: space-between;
 
-  > a {
+  @media (max-width: 1024px) {
+    grid-column: 1/8;
+    ${({ alignRight }) => alignRight && "text-align:right; grid-column: 4/-1;"}
+  }
+
+  @media (max-width: 600px) {
+    z-index: 2;
+    height: 100%;
+    padding: 1rem;
+    background-color: var(--slight-navy);
+    opacity: 0.8;
+    border: 5px solid var(--navy-shadow);
+  }
+
+  h3 > a {
     color: var(--darker-white);
     font-size: var(--fs-xxl);
     font-weight: 700;
     text-decoration: none;
+    transition: var(--transition-ease-faster);
+
+    :hover {
+      color: var(--title);
+    }
   }
-  p {
+
+  > p {
+    z-index: 2;
     color: var(--darkest-white);
     background-color: var(--light-navy);
     padding: 1rem 2rem;
     border-radius: var(--border-radius);
+
+    @media (max-width: 600px) {
+      background-color: transparent;
+      padding: 0;
+    }
   }
 
-  ul {
+  > ul {
     list-style-type: none;
     display: flex;
     margin-left: -7px;
     ${({ alignRight }) =>
       alignRight && "justify-content: right; margin-right: -7px;"}
 
+    @media (max-width: 768px) {
+      flex-wrap: wrap;
+    }
+
     li {
+      z-index: 2;
       font-family: var(--font-mono);
       margin: 0 5px;
       padding: 2px 4px;
@@ -120,6 +162,10 @@ const ProjectDescriptionContainer = styled.div`
       background-color: var(--lightest-navy);
       color: var(--title);
       white-space: nowrap;
+
+      @media (max-width: 768px) {
+        margin: 5px;
+      }
     }
   }
 
@@ -165,7 +211,9 @@ const Project = ({
       {index % 2 ? (
         <>
           <ProjectDescriptionContainer alignRight={false}>
-            <a href="/">{name}</a>
+            <h3>
+              <a href="/">{name}</a>
+            </h3>
             <p>{description}</p>
             <ul>
               {tech.map((tech, i) => (
@@ -201,7 +249,9 @@ const Project = ({
             <img src={screenshot} alt={`${name} project demo`} />
           </ProjectImg>
           <ProjectDescriptionContainer alignRight={true}>
-            <a href="/">{name}</a>
+            <h3>
+              <a href="/">{name}</a>
+            </h3>
             <p>{description}</p>
             <ul>
               {tech.map((tech, i) => (

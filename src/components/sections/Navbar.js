@@ -4,10 +4,12 @@ import useScrollDirection from "../../hooks/useScrollDirection";
 
 const Nav = styled.div`
   background: rgba(10, 25, 47, 0.9);
+  box-shadow: 0 10px 30px -10px var(--navy-shadow);
   z-index: 20;
   position: sticky;
   top: 0px;
   height: var(--nav-height);
+  min-width: 320px;
   transition: var(--transition-ease);
   ${({ scrollDown }) => scrollDown && `top: -10rem;`}
 `;
