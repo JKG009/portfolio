@@ -1,5 +1,5 @@
 import React from "react";
-import { IconGitHub, LiveSite } from "./index";
+import { IconGitHub, LinkedIn, LiveSite } from "./index";
 
 const Icon = ({ name }) => {
   switch (name) {
@@ -7,6 +7,8 @@ const Icon = ({ name }) => {
       return <IconGitHub />;
     case "Live Site":
       return <LiveSite />;
+    case "LinkedIn":
+      return <LinkedIn />;
     default:
       return;
   }

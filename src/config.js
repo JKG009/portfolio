@@ -116,3 +116,8 @@ export const projects = [
     },
   },
 ];
+
+export const social = {
+  github: "https://github.com/JKG009",
+  linkedIn: "https://www.linkedin.com/in/geoffrey-lee-6120b11ab/",
+};

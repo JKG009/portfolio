@@ -25,7 +25,7 @@ const ProjectsContainer = styled.section`
   }
 
   @media (max-width: 1000px) {
-    padding: 60px 0;
+    padding: 30px 0;
     h2 {
       :after {
         width: calc(100vw - 50vw);
@@ -182,16 +182,14 @@ const ProjectDescriptionContainer = styled.div`
       margin-right: 20px;
     }
 
-    :hover {
-      svg {
-        transform: scale(1.2);
-      }
-    }
-
     svg {
       transition: var(--transition-ease);
       width: 20px;
       height: 20px;
+      
+      :hover {
+        transform: scale(1.2);
+      }
     }
   }
 `;

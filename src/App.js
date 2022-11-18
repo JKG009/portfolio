@@ -1,4 +1,4 @@
-import { Navbar, Hero, About, Projects } from "./components/sections";
+import { Navbar, Hero, About, Projects, Footer } from "./components/sections";
 import "./styles/app.css";
 
 function App() {
@@ -10,6 +10,7 @@ function App() {
         <About />
         <Projects />
       </div>
+        <Footer />
     </>
   );
 }
