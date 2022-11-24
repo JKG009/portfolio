@@ -5,8 +5,6 @@ import { frontSkills, otherSkills } from "../../config";
 const AboutContainer = styled.section`
   max-width: var(--max-width);
   margin: auto;
-  padding: 100px 0;
-  //TODO: padding
   padding: 100px 80px;
 
   h2 {
@@ -66,7 +64,6 @@ const AboutContainer = styled.section`
 
 const AboutTextContainer = styled.div`
   width: 50%;
-  height: 100%;
   padding: 0.5rem 1rem;
 
   @media (max-width: 1024px) {
@@ -80,29 +77,31 @@ const AboutTextContainer = styled.div`
 
 const AboutText = styled.p`
   line-height: 2;
-  margin: 1rem 2rem;
-  margin: 1vw 2vw;
+  padding: 1rem 2rem;
+
+  @media (max-width: 1024px) {
+    padding: 0.5rem 1rem;
+  }
+
+  @media (max-width: 375px) {
+    padding: 0.5rem 0;
+  }
 `;
 
 const AboutSkillsContainer = styled.div`
   width: 50%;
   background-color: var(--light-navy);
-  padding: 1rem 2rem;
   border-radius: var(--container-border-radius);
 
   h3 {
     color: var(--darkest-white);
+    padding: 1rem 2rem;
   }
 
   @media (max-width: 1024px) {
     width: 100%;
     max-width: 700px;
-    padding: 0;
     margin: 1rem auto 0;
-
-    h3 {
-      padding: 1rem 2rem;
-    }
   }
 `;
 
@@ -110,7 +109,7 @@ const AboutSkillLogos = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  margin-top: 1.2rem;
+  margin-top: 1rem;
 `;
 
 const AboutSkillLogo = styled.div`

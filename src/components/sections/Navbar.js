@@ -9,10 +9,10 @@ const Nav = styled.div`
   position: sticky;
   top: 0px;
   height: var(--nav-height);
-  min-width: 320px;
+  min-width: var(--min-width);
   transition: var(--transition-ease);
   ${({ scrollDown }) => scrollDown && `top: -10rem;`}
-`;
+  `;
 
 const NavContainer = styled.div`
   height: var(--nav-height);
@@ -21,7 +21,7 @@ const NavContainer = styled.div`
   align-items: center;
   max-width: var(--max-width);
   margin: auto;
-`;
+  `;
 
 const NavLogo = styled.a`
   text-decoration: none;
@@ -30,7 +30,7 @@ const NavLogo = styled.a`
   margin: 25px;
   padding: 5px;
   color: var(--title);
-`;
+  `;
 
 const NavLinks = styled.a`
   color: var(--white);

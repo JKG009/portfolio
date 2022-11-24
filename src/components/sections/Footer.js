@@ -9,16 +9,20 @@ const Social = styled.div`
   position: fixed;
   bottom: 0;
   left: 40px;
+
   :after {
     content: "";
     display: block;
     width: 1px;
     height: 90px;
-    margin: 10px auto 0;
-    background-color: white;
+    margin: 15px auto 0;
+    background-color: var(--grey);
   }
+
   @media (max-width: 1600px) {
     display: block;
+    min-width: var(--min-width);
+
     position: static;
     text-align: center;
     margin: 5px 0;
@@ -29,7 +33,7 @@ const Social = styled.div`
   }
 
   a {
-    color: var(--darker-white);
+    color: var(--darkest-white);
     text-decoration: none;
 
     :hover {
@@ -44,7 +48,7 @@ const Social = styled.div`
       transition: var(--transition-ease);
       width: 20px;
       height: 20px;
-      margin-top: 10px;
+      margin-top: 15px;
 
       @media (max-width: 1600px) {
         margin: 0;
@@ -58,6 +62,7 @@ const Social = styled.div`
 `;
 const FooterContainer = styled.div`
   max-width: var(--max-width);
+  min-width: var(--min-width);
   margin: auto;
   text-align: center;
   padding-bottom: 15px;

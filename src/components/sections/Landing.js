@@ -7,10 +7,9 @@ const LandingContainer = styled.section`
   height: 100vh;
   max-width: var(--max-width);
   width: 100%;
-  padding: 0 10vw 0 10vw;
+  padding: 0 10vw 0;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
   justify-content: center;
 
   h1 {

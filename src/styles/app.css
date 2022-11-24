@@ -1,5 +1,5 @@
 .section-container {
-  min-width: 320px;
+  min-width: var(--min-width);
   position: relative;
   top: -70px;
   padding: 1rem 2rem;

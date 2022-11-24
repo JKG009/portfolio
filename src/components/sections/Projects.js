@@ -54,12 +54,11 @@ const ProjectsContainer = styled.section`
 const ProjectContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(10, 1fr);
-  height: 400px;
+  height: 450px;
   margin-bottom: 100px;
 
-  > a,
-  div {
-    grid-row: 1/2;
+  :last-child {
+    margin-bottom: 0;
   }
 
   @media (max-width: 600px) {
@@ -69,6 +68,7 @@ const ProjectContainer = styled.div`
 
 const ProjectImg = styled.a`
   grid-column: 6/-1;
+  grid-row: 1/2;
   ${({ alignRight }) => alignRight && "grid-column: 1/6;"}
   overflow: hidden;
   border-radius: var(--border-radius);
@@ -98,6 +98,7 @@ const ProjectDescriptionContainer = styled.div`
   height: 80%;
   margin: auto 0;
   grid-column: 2/7;
+  grid-row: 1/2;
   ${({ alignRight }) => alignRight && "text-align:right; grid-column: 5/-2;"}
   display: flex;
   flex-direction: column;
@@ -162,6 +163,11 @@ const ProjectDescriptionContainer = styled.div`
       background-color: var(--lightest-navy);
       color: var(--title);
       white-space: nowrap;
+      transition: var(--transition-ease);
+
+      :hover {
+        background-color: var(--tint);
+      }
 
       @media (max-width: 768px) {
         margin: 5px;
@@ -186,7 +192,7 @@ const ProjectDescriptionContainer = styled.div`
       transition: var(--transition-ease);
       width: 20px;
       height: 20px;
-      
+
       :hover {
         transform: scale(1.2);
       }

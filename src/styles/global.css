@@ -20,7 +20,7 @@
   --dark-grey: #495670;
   /* Bold */
   --title: #949bff;
-  --tint: #b8bcf5;
+  --tint: #717aff8a;
 
   --font-sans: "Calibre", "Inter", "San Francisco", "SF Pro Text", -apple-system,
     system-ui, sans-serif;
@@ -36,6 +36,7 @@
   --fs-heading: 32px;
 
   --nav-height: 70px;
+  --min-width: 320px;
   --max-width: 1400px;
   --border-radius: 4px;
   --container-border-radius: 10px;
