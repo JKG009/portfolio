@@ -21,6 +21,9 @@
   /* Bold */
   --title: #949bff;
   --tint: #717aff8a;
+  /* Form Colors */
+  --green: #0D4E0D;
+  --red: #E52121;
 
   --font-sans: "Calibre", "Inter", "San Francisco", "SF Pro Text", -apple-system,
     system-ui, sans-serif;

@@ -5,7 +5,7 @@ import { frontSkills, otherSkills } from "../../config";
 const AboutContainer = styled.section`
   max-width: var(--max-width);
   margin: auto;
-  padding: 100px 80px;
+  padding: 100px 80px 160px;
 
   h2 {
     color: var(--darker-white);

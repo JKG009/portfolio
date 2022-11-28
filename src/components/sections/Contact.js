@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import emailjs from "@emailjs/browser";
 
 const ContactContainer = styled.div`
   max-width: var(--max-width);
   margin: auto;
-  margin-bottom: -70px;
-  padding: 100px 80px;
+  padding: 160px 80px;
   height: 625px;
 
   @media (max-width: 1024px) {
@@ -83,6 +83,7 @@ const ContactDetailsText = styled.div`
   @media (max-width: 840px) {
     grid-row: 1;
     padding: 0.5rem 1rem;
+    margin-bottom: 10px;
   }
 
   @media (max-width: 375px) {
@@ -112,19 +113,21 @@ const ContactDetailsText = styled.div`
 const ContactFormContainer = styled.form`
   position: relative;
   grid-column: 2;
+  text-align: right;
 
   @media (max-width: 840px) {
     width: 100%;
     margin-top: 1rem;
     grid-column: 1;
     grid-row: 2;
+    text-align: center;
   }
 
   div {
     position: relative;
     width: 100%;
     height: 50px;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 
     > input,
     textarea {
@@ -147,10 +150,6 @@ const ContactFormContainer = styled.form`
     > textarea {
       height: fit-content;
       resize: none;
-
-      @media (max-width: 1430px) {
-        height: 150px;
-      }
     }
 
     > label {
@@ -181,39 +180,174 @@ const ContactSubmit = styled.button`
   font-size: var(--fs-md);
   width: 200px;
   height: 40px;
-  position: absolute;
-  bottom: -60px;
-  right: 0;
+  margin-top: 20px;
   cursor: pointer;
-  background-color: transparent;
   border: 1px solid var(--title);
   border-radius: var(--border-radius);
-  color: var(--title);
+  color: ${({ formSent }) => (formSent ? "var(--white)" : "var(--title)")};
   transition: background-color 0.5s ease;
   outline: none;
+  background-color: ${({ formSent, emailJsErr }) =>
+    emailJsErr ? "var(--red)" : formSent ? "var(--green)" : "transparent"};
 
-  :hover,
-  :focus {
+  :hover:enabled,
+  :focus:enabled {
     background-color: var(--tint);
   }
 
-  @media (max-width: 1300px) {
-    bottom: -20px;
-  }
-
-  @media (max-width: 935px) {
-    bottom: 0;
-  }
-
-  @media (max-width: 840px) {
-    margin-left: auto;
-    margin-right: auto;
-    bottom: -10px;
-    left: 0;
+  :disabled {
+    cursor: default;
   }
 `;
 
+const ContactErrorMessage = styled.p`
+  color: var(--red);
+  text-align: right;
+  position: absolute;
+  right: 0;
+  top: -25px;
+`;
+
+const ContactHoneypot = styled.div`
+  display: none;
+`;
+
 const Contact = () => {
+  const serviceID = process.env.REACT_APP_SERVICE_ID;
+  const templateID = process.env.REACT_APP_TEMPLATE_ID;
+  const publicKey = process.env.REACT_APP_PUBLIC_KEY;
+
+  const [form, setForm] = useState({
+    name: "",
+    nameErr: null,
+    email: "",
+    emailErr: null,
+    message: "",
+    messageErr: null,
+    formSent: false,
+    loading: false,
+    emailJsErr: false,
+    number: "",
+  });
+  const [disableBtn, setDisableBtn] = useState(true);
+
+  const {
+    name,
+    email,
+    message,
+    nameErr,
+    emailErr,
+    messageErr,
+    formSent,
+    loading,
+    emailJsErr,
+    number,
+  } = form;
+
+  const btnText = () => {
+    if (emailJsErr) {
+      return "Error";
+    }
+    if (loading) {
+      return "Please Wait";
+    }
+    if (formSent) {
+      return "Sent";
+    }
+    return "Send";
+  };
+
+  useEffect(() => {
+    if (
+      nameErr === false &&
+      emailErr === false &&
+      messageErr === false &&
+      !formSent
+    ) {
+      setDisableBtn(false);
+    } else {
+      setDisableBtn(true);
+    }
+  }, [nameErr, emailErr, messageErr, formSent]);
+
+  const handleInput = (inputId, value) => {
+    setForm((state) => ({ ...state, [inputId]: value }));
+    if (inputId === "name" || "message") {
+      value.split(" ").join("") === ""
+        ? setForm((state) => ({
+            ...state,
+            [`${inputId}Err`]: `Please include a ${inputId}.`,
+          }))
+        : setForm((state) => ({
+            ...state,
+            [`${inputId}Err`]: false,
+          }));
+    }
+    if (inputId === "email") {
+      /^[a-zA-Z0-9]+@(?:[a-zA-Z0-9]+\.)+[A-Za-z]+$/.test(value) !== true
+        ? setForm((state) => ({
+            ...state,
+            emailErr: "Please include a valid email.",
+          }))
+        : setForm((state) => ({
+            ...state,
+            emailErr: false,
+          }));
+    }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setDisableBtn(true);
+
+    if (number === "") {
+      setForm((state) => ({
+        ...state,
+        loading: true,
+      }));
+      emailjs.send(serviceID, templateID, form, publicKey).then(
+        () => {
+          setForm((state) => ({
+            ...state,
+            name: "",
+            email: "",
+            message: "",
+            formSent: true,
+            loading: false,
+          }));
+          setDisableBtn(true);
+        },
+        () => {
+          setForm((state) => ({
+            ...state,
+            formSent: true,
+            loading: false,
+            emailJsErr: true,
+          }));
+          alert(
+            "Message failed to send. Please message me directly via email and I will get back to you! Sorry for the inconvenience."
+          );
+        }
+      );
+    } else {
+      setForm((state) => ({
+        ...state,
+        loading: true,
+      }));
+      setTimeout(() => {
+        setForm((state) => ({
+          ...state,
+          name: "",
+          email: "",
+          message: "",
+          number: "",
+          formSent: true,
+          loading: false,
+        }));
+      }, 3000);
+    }
+  };
+
   return (
     <ContactContainer>
       <h2>Contact Me</h2>
@@ -233,23 +367,67 @@ const Contact = () => {
         </ContactDetailsText>
         <ContactFormContainer>
           <div>
-            <input type="text" id="email" autocomplete="off" placeholder=" " />
-            <label htmlFor="email">Name</label>
+            {nameErr !== "" && (
+              <ContactErrorMessage>{nameErr}</ContactErrorMessage>
+            )}
+            <input
+              type="text"
+              id="name"
+              value={name}
+              autoComplete="off"
+              placeholder=" "
+              onChange={(e) => handleInput(e.target.id, e.target.value)}
+              style={nameErr ? { borderColor: "var(--red)" } : null}
+            />
+            <label htmlFor="name">Name</label>
           </div>
+          <ContactHoneypot>
+            <input
+              type="tel"
+              id="number"
+              value={number}
+              autoComplete="off"
+              placeholder=" "
+              onChange={(e) => handleInput(e.target.id, e.target.value)}
+            />
+            <label htmlFor="number">Phone Number</label>
+          </ContactHoneypot>
           <div>
-            <input type="text" id="email" autocomplete="off" placeholder=" " />
+            {nameErr !== "" && (
+              <ContactErrorMessage>{emailErr}</ContactErrorMessage>
+            )}
+            <input
+              type="text"
+              id="email"
+              value={email}
+              autoComplete="off"
+              placeholder=" "
+              onChange={(e) => handleInput(e.target.id, e.target.value)}
+              style={emailErr ? { borderColor: "var(--red)" } : null}
+            />
             <label htmlFor="email">Email</label>
           </div>
           <div>
+            <ContactErrorMessage>{messageErr}</ContactErrorMessage>
             <textarea
               type="text"
               id="message"
-              autocomplete="off"
+              value={message}
+              autoComplete="off"
               placeholder=" "
+              onChange={(e) => handleInput(e.target.id, e.target.value)}
+              style={messageErr ? { borderColor: "var(--red)" } : null}
             />
             <label htmlFor="message">Message</label>
           </div>
-          <ContactSubmit>Send</ContactSubmit>
+          <ContactSubmit
+            formSent={formSent}
+            emailJsErr={emailJsErr}
+            disabled={disableBtn}
+            onClick={(e) => handleSubmit(e)}
+          >
+            {btnText()}
+          </ContactSubmit>
         </ContactFormContainer>
       </div>
     </ContactContainer>

@@ -6,7 +6,7 @@ import { projects } from "../../config";
 const ProjectsContainer = styled.section`
   max-width: var(--max-width);
   margin: auto;
-
+  padding: 160px 0;
   h2 {
     color: var(--darker-white);
     font-size: clamp(26px, 5vw, var(--fs-heading));
@@ -55,7 +55,7 @@ const ProjectContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(10, 1fr);
   height: 450px;
-  margin-bottom: 100px;
+  margin-bottom: 120px;
 
   :last-child {
     margin-bottom: 0;
