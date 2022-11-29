@@ -349,7 +349,7 @@ const Contact = () => {
   };
 
   return (
-    <ContactContainer>
+    <ContactContainer id="contact">
       <h2>Contact Me</h2>
       <div>
         <ContactDetailsText>

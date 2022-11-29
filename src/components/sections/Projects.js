@@ -279,7 +279,7 @@ const Project = ({
 
 const Projects = () => {
   return (
-    <ProjectsContainer>
+    <ProjectsContainer id="projects">
       <h2>Projects</h2>
       <div>
         {projects.map((project, i) => (

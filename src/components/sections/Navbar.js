@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import useScrollDirection from "../../hooks/useScrollDirection";
+import { Link } from "react-scroll";
+import cv from "../documents/cv.pdf";
 
 const Nav = styled.div`
   background: rgba(10, 25, 47, 0.9);
@@ -12,7 +14,7 @@ const Nav = styled.div`
   min-width: var(--min-width);
   transition: var(--transition-ease);
   ${({ scrollDown }) => scrollDown && `top: -10rem;`}
-  `;
+`;
 
 const NavContainer = styled.div`
   height: var(--nav-height);
@@ -21,18 +23,19 @@ const NavContainer = styled.div`
   align-items: center;
   max-width: var(--max-width);
   margin: auto;
-  `;
+`;
 
-const NavLogo = styled.a`
+const NavLogo = styled(Link)`
   text-decoration: none;
   font-weight: 700;
   font-size: var(--fs-heading);
   margin: 25px;
   padding: 5px;
   color: var(--title);
-  `;
+  cursor: pointer;
+`;
 
-const NavLinks = styled.a`
+const NavLinks = styled(Link)`
   color: var(--white);
   font-size: var(--fs-md);
   text-decoration: none;
@@ -40,6 +43,7 @@ const NavLinks = styled.a`
   padding: 5px;
   position: relative;
   opacity: 0.85;
+  cursor: pointer;
 
   :focus {
     outline: 1px solid var(--white);
@@ -71,6 +75,26 @@ const NavLinks = styled.a`
     ::before {
       background: transparent;
     }
+  }
+`;
+
+const NavCv = styled.a`
+  color: var(--title);
+  font-size: var(--fs-lg);
+  font-family: var(--font-mono);
+  text-decoration: none;
+  margin: 25px;
+  padding: 5px 30px;
+  opacity: 0.85;
+  background-color: transparent;
+  border: 1px solid var(--title);
+  border-radius: var(--border-radius);
+  transition: background-color 0.5s ease;
+  cursor: pointer;
+
+  :hover,
+  :focus {
+    background-color: var(--tint);
   }
 `;
 
@@ -159,13 +183,23 @@ const Navbar = () => {
           <NavBurger isOpen={isOpen}></NavBurger>
         </NavToggle>
         <NavItems isOpen={isOpen}>
-          <NavLinks href="/about">About</NavLinks>
-          <NavLinks href="/projects">Projects</NavLinks>
-          <NavLinks href="/contact">Contact</NavLinks>
-          <NavLinks href="/cv">CV</NavLinks>
+          <NavCv href={cv} target="_blank">
+            CV
+          </NavCv>
+          <NavLinks href="#" to="about" onClick={() => setIsOpen(false)}>
+            About
+          </NavLinks>
+          <NavLinks href="#" to="projects" onClick={() => setIsOpen(false)}>
+            Projects
+          </NavLinks>
+          <NavLinks href="#" to="contact" onClick={() => setIsOpen(false)}>
+            Contact
+          </NavLinks>
         </NavItems>
         {/* TODO make logo */}
-        <NavLogo href="/home">Logo</NavLogo>
+        <NavLogo href="#" to="hero">
+          李
+        </NavLogo>
       </NavContainer>
     </Nav>
   );

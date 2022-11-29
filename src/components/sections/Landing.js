@@ -44,12 +44,12 @@ const LandingContainer = styled.section`
 
 const Hero = () => {
   return (
-      <LandingContainer>
-        <h1>My name is</h1>
-        <h2>Geoffrey Lee.</h2>
-        <h3>Welcome to my page!</h3>
-        <h4>I am a self-taught Frontend Web Developer.</h4>
-      </LandingContainer>
+    <LandingContainer id="hero">
+      <h1>My name is</h1>
+      <h2>Geoffrey Lee.</h2>
+      <h3>Welcome to my page!</h3>
+      <h4>I am a self-taught Frontend Web Developer.</h4>
+    </LandingContainer>
   );
 };
 

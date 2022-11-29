@@ -142,54 +142,54 @@ const AboutSkillLogo = styled.div`
 
 const About = () => {
   return (
-      <AboutContainer>
-        <h2>About Me</h2>
-        <div>
-          <AboutTextContainer>
-            <AboutText>
-              I am a self-taught frontend developer who began his coding journey
-              in 2021. Utilizing free online resources such as FreeCodeCamp and
-              Youtube videos, I have aquired the skills required to make
-              impactful and well designed applications and websites on my own.
-            </AboutText>
-            <AboutText>
-              I strive to write clean and maintainable code so it is easier to
-              read, for both myself and anyone who comes across my work.
-            </AboutText>
-            <AboutText>
-              {" "}
-              While I am continuously refining my skills in my go-to tech stack,
-              I often find myself looking into new technologies that are
-              commonly used in modern applications and try to learn and
-              incorporate them into my future projects.
-            </AboutText>
-          </AboutTextContainer>
-          <AboutSkillsContainer>
-            <div>
-              <h3>Tech Skills</h3>
-              <AboutSkillLogos>
-                {frontSkills.map(({ name, src }) => (
-                  <AboutSkillLogo key={name}>
-                    <img src={src} alt={name} />
-                    <p>{name}</p>
-                  </AboutSkillLogo>
-                ))}
-              </AboutSkillLogos>
-            </div>
-            <div>
-              <h3>Others</h3>
-              <AboutSkillLogos>
-                {otherSkills.map(({ name, src }) => (
-                  <AboutSkillLogo key={name}>
-                    <img src={src} alt={name} />
-                    <p>{name}</p>
-                  </AboutSkillLogo>
-                ))}
-              </AboutSkillLogos>
-            </div>
-          </AboutSkillsContainer>
-        </div>
-      </AboutContainer>
+    <AboutContainer id="about">
+      <h2>About Me</h2>
+      <div>
+        <AboutTextContainer>
+          <AboutText>
+            I am a self-taught frontend developer who began his coding journey
+            in 2021. Utilizing free online resources such as FreeCodeCamp and
+            Youtube videos, I have aquired the skills required to make impactful
+            and well designed applications and websites on my own.
+          </AboutText>
+          <AboutText>
+            I strive to write clean and maintainable code so it is easier to
+            read, for both myself and anyone who comes across my work.
+          </AboutText>
+          <AboutText>
+            {" "}
+            While I am continuously refining my skills in my go-to tech stack, I
+            often find myself looking into new technologies that are commonly
+            used in modern applications and try to learn and incorporate them
+            into my future projects.
+          </AboutText>
+        </AboutTextContainer>
+        <AboutSkillsContainer>
+          <div>
+            <h3>Tech Skills</h3>
+            <AboutSkillLogos>
+              {frontSkills.map(({ name, src }) => (
+                <AboutSkillLogo key={name}>
+                  <img src={src} alt={name} />
+                  <p>{name}</p>
+                </AboutSkillLogo>
+              ))}
+            </AboutSkillLogos>
+          </div>
+          <div>
+            <h3>Others</h3>
+            <AboutSkillLogos>
+              {otherSkills.map(({ name, src }) => (
+                <AboutSkillLogo key={name}>
+                  <img src={src} alt={name} />
+                  <p>{name}</p>
+                </AboutSkillLogo>
+              ))}
+            </AboutSkillLogos>
+          </div>
+        </AboutSkillsContainer>
+      </div>
+    </AboutContainer>
   );
 };
 
