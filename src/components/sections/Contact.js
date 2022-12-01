@@ -305,30 +305,44 @@ const Contact = () => {
         ...state,
         loading: true,
       }));
-      emailjs.send(serviceID, templateID, form, publicKey).then(
-        () => {
-          setForm((state) => ({
-            ...state,
-            name: "",
-            email: "",
-            message: "",
-            formSent: true,
-            loading: false,
-          }));
-          setDisableBtn(true);
-        },
-        () => {
-          setForm((state) => ({
-            ...state,
-            formSent: true,
-            loading: false,
-            emailJsErr: true,
-          }));
-          alert(
-            "Message failed to send. Please message me directly via email and I will get back to you! Sorry for the inconvenience."
-          );
-        }
-      );
+      // emailjs.send(serviceID, templateID, form, publicKey).then(
+      //   () => {
+      //     setForm((state) => ({
+      //       ...state,
+      //       name: "",
+      //       email: "",
+      //       message: "",
+      //       formSent: true,
+      //       loading: false,
+      //     }));
+      //     setDisableBtn(true);
+      //   },
+      //   () => {
+      //     setForm((state) => ({
+      //       ...state,
+      //       formSent: true,
+      //       loading: false,
+      //       emailJsErr: true,
+      //     }));
+      //     alert(
+      //       "Message failed to send. Please message me directly via email and I will get back to you! Sorry for the inconvenience."
+      //     );
+      //   }
+      // );
+
+      // For development testing
+
+      setTimeout(() => {
+        setForm((state) => ({
+          ...state,
+          name: "",
+          email: "",
+          message: "",
+          formSent: true,
+          loading: false,
+        }));
+        setDisableBtn(true);
+      }, 3000);
     } else {
       setForm((state) => ({
         ...state,
@@ -350,23 +364,27 @@ const Contact = () => {
 
   return (
     <ContactContainer id="contact">
-      <h2>Contact Me</h2>
+      <h2 data-aos="fade-up">Contact Me</h2>
       <div>
         <ContactDetailsText>
-          <h3>I am currently looking for new opportunities!</h3>
-          <p>
+          <h3 data-aos="fade-up" data-aos-delay="300">
+            I am currently looking for new opportunities!
+          </h3>
+          <p data-aos="fade-up" data-aos-delay="400">
             Whether it is a job position, an interest in collaborating on a
             project, questions about me or one of my projects, or just want to
             say hi.
           </p>
-          <p>
+          <p data-aos="fade-up" data-aos-delay="500">
             Don't hesitiate to
             <span> Get in touch!</span>
           </p>
-          <p>Drop me a message and I'll get back to you as soon as I can.</p>
+          <p data-aos="fade-up" data-aos-delay="600">
+            Drop me a message and I'll get back to you as soon as I can.
+          </p>
         </ContactDetailsText>
         <ContactFormContainer>
-          <div>
+          <div data-aos="zoom-in" data-aos-delay="500">
             {nameErr !== "" && (
               <ContactErrorMessage>{nameErr}</ContactErrorMessage>
             )}
@@ -381,7 +399,7 @@ const Contact = () => {
             />
             <label htmlFor="name">Name</label>
           </div>
-          <ContactHoneypot>
+          <ContactHoneypot data-aos="zoom-in" data-aos-delay="500">
             <input
               type="tel"
               id="number"
@@ -392,7 +410,7 @@ const Contact = () => {
             />
             <label htmlFor="number">Phone Number</label>
           </ContactHoneypot>
-          <div>
+          <div data-aos="zoom-in" data-aos-delay="600">
             {nameErr !== "" && (
               <ContactErrorMessage>{emailErr}</ContactErrorMessage>
             )}
@@ -407,7 +425,7 @@ const Contact = () => {
             />
             <label htmlFor="email">Email</label>
           </div>
-          <div>
+          <div data-aos="zoom-in" data-aos-delay="700">
             <ContactErrorMessage>{messageErr}</ContactErrorMessage>
             <textarea
               type="text"
@@ -420,14 +438,16 @@ const Contact = () => {
             />
             <label htmlFor="message">Message</label>
           </div>
-          <ContactSubmit
-            formSent={formSent}
-            emailJsErr={emailJsErr}
-            disabled={disableBtn}
-            onClick={(e) => handleSubmit(e)}
-          >
-            {btnText()}
-          </ContactSubmit>
+          <div data-aos="zoom-in" data-aos-delay="900">
+            <ContactSubmit
+              formSent={formSent}
+              emailJsErr={emailJsErr}
+              disabled={disableBtn}
+              onClick={(e) => handleSubmit(e)}
+            >
+              {btnText()}
+            </ContactSubmit>
+          </div>
         </ContactFormContainer>
       </div>
     </ContactContainer>

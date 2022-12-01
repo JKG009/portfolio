@@ -7,6 +7,8 @@ const ProjectsContainer = styled.section`
   max-width: var(--max-width);
   margin: auto;
   padding: 160px 0;
+  overflow-x: hidden;
+
   h2 {
     color: var(--darker-white);
     font-size: clamp(26px, 5vw, var(--fs-heading));
@@ -210,69 +212,65 @@ const Project = ({
   },
   index,
 }) => {
-  return (
-    <ProjectContainer>
-      {index % 2 ? (
-        <>
-          <ProjectDescriptionContainer alignRight={false}>
-            <h3>
-              <a href="/">{name}</a>
-            </h3>
-            <p>{description}</p>
-            <ul>
-              {tech.map((tech, i) => (
-                <li key={tech[i]}>{tech}</li>
-              ))}
-            </ul>
-            <div>
-              <a target="_blank" rel="noopener noreferrer" href={github}>
-                <Icon name="GitHub" />
-              </a>
-              <a href="/">
-                <Icon name="Live Site" />
-              </a>
-            </div>
-          </ProjectDescriptionContainer>
-          <ProjectImg
-            alignRight={false}
-            target="_blank"
-            rel="noopener noreferrer"
-            href={github}
-          >
-            <img src={screenshot} alt={`${name} project demo`} />
-          </ProjectImg>
-        </>
-      ) : (
-        <>
-          <ProjectImg
-            alignRight={true}
-            target="_blank"
-            rel="noopener noreferrer"
-            href={github}
-          >
-            <img src={screenshot} alt={`${name} project demo`} />
-          </ProjectImg>
-          <ProjectDescriptionContainer alignRight={true}>
-            <h3>
-              <a href="/">{name}</a>
-            </h3>
-            <p>{description}</p>
-            <ul>
-              {tech.map((tech, i) => (
-                <li key={tech[i]}>{tech}</li>
-              ))}
-            </ul>
-            <div>
-              <a target="_blank" rel="noopener noreferrer" href={github}>
-                <Icon name="GitHub" />
-              </a>
-              <a href="/">
-                <Icon name="Live Site" />
-              </a>
-            </div>
-          </ProjectDescriptionContainer>
-        </>
-      )}
+  return index % 2 ? (
+    <ProjectContainer data-aos="fade-left" data-aos-delay="300">
+      <ProjectDescriptionContainer alignRight={false}>
+        <h3>
+          <a href="/">{name}</a>
+        </h3>
+        <p>{description}</p>
+        <ul>
+          {tech.map((tech, i) => (
+            <li key={tech[i]}>{tech}</li>
+          ))}
+        </ul>
+        <div>
+          <a target="_blank" rel="noopener noreferrer" href={github}>
+            <Icon name="GitHub" />
+          </a>
+          <a href="/">
+            <Icon name="Live Site" />
+          </a>
+        </div>
+      </ProjectDescriptionContainer>
+      <ProjectImg
+        alignRight={false}
+        target="_blank"
+        rel="noopener noreferrer"
+        href={github}
+      >
+        <img src={screenshot} alt={`${name} project demo`} />
+      </ProjectImg>
+    </ProjectContainer>
+  ) : (
+    <ProjectContainer data-aos="fade-right" data-aos-delay="300">
+      <ProjectImg
+        alignRight={true}
+        target="_blank"
+        rel="noopener noreferrer"
+        href={github}
+      >
+        <img src={screenshot} alt={`${name} project demo`} />
+      </ProjectImg>
+      <ProjectDescriptionContainer alignRight={true}>
+        <h3>
+          <a href="/">{name}</a>
+        </h3>
+        <p>{description}</p>
+        <ul>
+          {tech.map((tech, i) => (
+            <li key={tech[i]}>{tech}</li>
+          ))}
+        </ul>
+        <div>
+          <a target="_blank" rel="noopener noreferrer" href={github}>
+            <Icon name="GitHub" />
+          </a>
+          <a href="/">
+            <Icon name="Live Site" />
+          </a>
+        </div>
+      </ProjectDescriptionContainer>
     </ProjectContainer>
   );
 };
@@ -280,7 +278,7 @@ const Project = ({
 const Projects = () => {
   return (
     <ProjectsContainer id="projects">
-      <h2>Projects</h2>
+      <h2 data-aos="fade-up">Projects</h2>
       <div>
         {projects.map((project, i) => (
           <Project key={project.name} project={project} index={i} />

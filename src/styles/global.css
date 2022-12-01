@@ -80,17 +80,3 @@ html {
 ::-webkit-scrollbar-thumb:hover {
   background-color: var(--light-navy);
 }
-
-/* .fade-in {
-  opacity: 0;
-  transform: translateY(5vh);
-  visibility: hidden;
-  transition: opacity 800ms ease-out, transform 600ms ease-out,
-  visibility 800ms ease-out;
-  will-change: opacity, transform, visibility;
-}
-.visible {
-  opacity: 1;
-  transform: none;
-  visibility: visible;
-} */

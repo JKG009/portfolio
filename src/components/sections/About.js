@@ -143,20 +143,20 @@ const AboutSkillLogo = styled.div`
 const About = () => {
   return (
     <AboutContainer id="about">
-      <h2>About Me</h2>
+      <h2 data-aos="fade-up">About Me</h2>
       <div>
         <AboutTextContainer>
-          <AboutText>
+          <AboutText data-aos="fade-up" data-aos-delay="300">
             I am a self-taught frontend developer who began his coding journey
             in 2021. Utilizing free online resources such as FreeCodeCamp and
             Youtube videos, I have aquired the skills required to make impactful
             and well designed applications and websites on my own.
           </AboutText>
-          <AboutText>
+          <AboutText data-aos="fade-up" data-aos-delay="400">
             I strive to write clean and maintainable code so it is easier to
             read, for both myself and anyone who comes across my work.
           </AboutText>
-          <AboutText>
+          <AboutText data-aos="fade-up" data-aos-delay="500">
             {" "}
             While I am continuously refining my skills in my go-to tech stack, I
             often find myself looking into new technologies that are commonly
@@ -164,7 +164,7 @@ const About = () => {
             into my future projects.
           </AboutText>
         </AboutTextContainer>
-        <AboutSkillsContainer>
+        <AboutSkillsContainer data-aos="fade-up" data-aos-delay="800">
           <div>
             <h3>Tech Skills</h3>
             <AboutSkillLogos>

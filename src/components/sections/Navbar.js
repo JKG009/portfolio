@@ -44,6 +44,7 @@ const NavLinks = styled(Link)`
   position: relative;
   opacity: 0.85;
   cursor: pointer;
+  display: inline-block;
 
   :focus {
     outline: 1px solid var(--white);
@@ -76,6 +77,17 @@ const NavLinks = styled(Link)`
       background: transparent;
     }
   }
+
+  &[data-aos="nav-animation"] {
+    transition-property: transform, opacity;
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+
+  &.aos-animate {
+    opacity: 1;
+    transform: translateY(0px);
+  }
 `;
 
 const NavCv = styled.a`
@@ -91,6 +103,7 @@ const NavCv = styled.a`
   border-radius: var(--border-radius);
   transition: background-color 0.5s ease;
   cursor: pointer;
+  display: inline-block;
 
   :hover,
   :focus {
@@ -183,21 +196,51 @@ const Navbar = () => {
           <NavBurger isOpen={isOpen}></NavBurger>
         </NavToggle>
         <NavItems isOpen={isOpen}>
-          <NavCv href={cv} target="_blank">
-            CV
-          </NavCv>
-          <NavLinks href="#" to="about" onClick={() => setIsOpen(false)}>
+          <div
+            style={{ display: "inline-block" }}
+            data-aos="slide-down"
+            data-aos-delay="200"
+          >
+            <NavCv href={cv} target="_blank">
+              CV
+            </NavCv>
+          </div>
+          <NavLinks
+            data-aos="nav-animation"
+            data-aos-delay="300"
+            href="#"
+            to="about"
+            onClick={() => setIsOpen(false)}
+          >
             About
           </NavLinks>
-          <NavLinks href="#" to="projects" onClick={() => setIsOpen(false)}>
+          <NavLinks
+            data-aos="nav-animation"
+            data-aos-delay="400"
+            href="#"
+            to="projects"
+            onClick={() => setIsOpen(false)}
+          >
             Projects
           </NavLinks>
-          <NavLinks href="#" to="contact" onClick={() => setIsOpen(false)}>
+          <NavLinks
+            data-aos="nav-animation"
+            data-aos-delay="500"
+            href="#"
+            to="contact"
+            onClick={() => setIsOpen(false)}
+          >
             Contact
           </NavLinks>
         </NavItems>
         {/* TODO make logo */}
-        <NavLogo href="#" to="hero">
+        <NavLogo
+          data-aos="fade-in"
+          data-aos-easing="ease"
+          data-aos-duration="3000"
+          href="#"
+          to="hero"
+        >
           李
         </NavLogo>
       </NavContainer>

@@ -22,7 +22,6 @@ const Social = styled.div`
   @media (max-width: 1600px) {
     display: block;
     min-width: var(--min-width);
-
     position: static;
     text-align: center;
     margin: 5px 0;
@@ -59,6 +58,17 @@ const Social = styled.div`
       }
     }
   }
+
+  &[data-aos="social-animation"] {
+    transition-property: transform, opacity;
+    opacity: 0;
+    transform: translateY(50px);
+  }
+
+  &.aos-animate {
+    opacity: 1;
+    transform: translateY(0px);
+  }
 `;
 const FooterContainer = styled.div`
   max-width: var(--max-width);
@@ -79,7 +89,11 @@ const Footer = () => {
   const { github, linkedIn } = social;
   return (
     <>
-      <Social>
+      <Social
+        data-aos="social-animation"
+        data-aos-delay="1000"
+        data-aos-offset="-100"
+      >
         <a href={github} target="_blank" rel="noopener noreferrer">
           <Icon name="GitHub" />
         </a>
