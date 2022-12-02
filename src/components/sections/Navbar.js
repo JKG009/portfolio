@@ -27,12 +27,13 @@ const NavContainer = styled.div`
 
 const NavLogo = styled(Link)`
   text-decoration: none;
-  font-weight: 700;
-  font-size: var(--fs-heading);
-  margin: 25px;
-  padding: 5px;
-  color: var(--title);
   cursor: pointer;
+  background-image: url(imgs/portfolio_logo.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100px;
+  height: 50px;
 `;
 
 const NavLinks = styled(Link)`
@@ -98,7 +99,7 @@ const NavCv = styled.a`
   margin: 25px;
   padding: 5px 30px;
   opacity: 0.85;
-  background-color: transparent;
+  background-color: var(--dark-tint);
   border: 1px solid var(--title);
   border-radius: var(--border-radius);
   transition: background-color 0.5s ease;
@@ -240,9 +241,7 @@ const Navbar = () => {
           data-aos-duration="3000"
           href="#"
           to="hero"
-        >
-          李
-        </NavLogo>
+        />
       </NavContainer>
     </Nav>
   );

@@ -45,16 +45,36 @@ const LandingContainer = styled.section`
 const Hero = () => {
   return (
     <LandingContainer id="hero">
-      <h1 data-aos="fade" data-aos-delay="600" data-aos-duration="3000" data-aos-easing="ease-in">
+      <h1
+        data-aos="fade"
+        data-aos-delay="600"
+        data-aos-duration="2000"
+        data-aos-easing="ease-in"
+      >
         My name is
       </h1>
-      <h2 data-aos="fade" data-aos-delay="800" data-aos-duration="3000" data-aos-easing="ease-in">
+      <h2
+        data-aos="fade"
+        data-aos-delay="800"
+        data-aos-duration="2000"
+        data-aos-easing="ease-in"
+      >
         Geoffrey Lee.
       </h2>
-      <h3 data-aos="fade" data-aos-delay="1000" data-aos-duration="3000" data-aos-easing="ease-in">
+      <h3
+        data-aos="fade"
+        data-aos-delay="1000"
+        data-aos-duration="2000"
+        data-aos-easing="ease-in"
+      >
         Welcome to my page!
       </h3>
-      <h4 data-aos="fade" data-aos-delay="1200" data-aos-duration="3000" data-aos-easing="ease-in">
+      <h4
+        data-aos="fade"
+        data-aos-delay="1200"
+        data-aos-duration="2000"
+        data-aos-easing="ease-in"
+      >
         I am a self-taught Frontend Web Developer.
       </h4>
     </LandingContainer>

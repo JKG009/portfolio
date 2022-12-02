@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Navbar,
   Hero,
@@ -6,29 +6,40 @@ import {
   Projects,
   Footer,
   Contact,
+  Loader,
 } from "./components/sections";
 import "./styles/app.css";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
 function App() {
+  const [isMounted, setIsMounted] = useState(false);
+
   useEffect(() => {
     AOS.init({
       duration: 1000,
       once: true,
     });
+    const mountPage = setTimeout(() => setIsMounted(true), 2500);
+    return () => clearTimeout(mountPage);
   }, []);
 
   return (
     <>
-      <Navbar />
-      <div className="section-container">
-        <Hero />
-        <About />
-        <Projects />
-        <Contact />
-      </div>
-      <Footer />
+      {isMounted ? (
+        <>
+          <Navbar />
+          <div className="section-container">
+            <Hero />
+            <About />
+            <Projects />
+            <Contact />
+          </div>
+          <Footer />
+        </>
+      ) : (
+        <Loader isMounted={isMounted} />
+      )}
     </>
   );
 }

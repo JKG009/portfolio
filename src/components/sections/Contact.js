@@ -188,7 +188,7 @@ const ContactSubmit = styled.button`
   transition: background-color 0.5s ease;
   outline: none;
   background-color: ${({ formSent, emailJsErr }) =>
-    emailJsErr ? "var(--red)" : formSent ? "var(--green)" : "transparent"};
+    emailJsErr ? "var(--red)" : formSent ? "var(--green)" : "var(--dark-tint)"};
 
   :hover:enabled,
   :focus:enabled {

@@ -156,7 +156,7 @@ const About = () => {
             I strive to write clean and maintainable code so it is easier to
             read, for both myself and anyone who comes across my work.
           </AboutText>
-          <AboutText data-aos="fade-up" data-aos-delay="500">
+          <AboutText data-aos="fade-up" data-aos-delay="600">
             {" "}
             While I am continuously refining my skills in my go-to tech stack, I
             often find myself looking into new technologies that are commonly
