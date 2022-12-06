@@ -212,6 +212,31 @@ const ContactHoneypot = styled.div`
   display: none;
 `;
 
+const ContactSpinner = styled.span`
+  display: block;
+  width: 3px;
+  height: 15px;
+  margin: auto;
+  border-radius: var(--border-radius);
+  background-color: var(--title);
+  animation: loading 2s linear infinite alternate;
+
+  @keyframes loading {
+    0% {
+      box-shadow: -10px -3px, 10px -3px;
+    }
+    33% {
+      box-shadow: -10px 3px, 10px 3px;
+    }
+    66% {
+      box-shadow: -10px -3px, 10px -3px;
+    }
+    100% {
+      box-shadow: -10px 3px, 10px 3px;
+    }
+  }
+`;
+
 const Contact = () => {
   const serviceID = process.env.REACT_APP_SERVICE_ID;
   const templateID = process.env.REACT_APP_TEMPLATE_ID;
@@ -249,7 +274,7 @@ const Contact = () => {
       return "Error";
     }
     if (loading) {
-      return "Please Wait";
+      return <ContactSpinner />;
     }
     if (formSent) {
       return "Sent";

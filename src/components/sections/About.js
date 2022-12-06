@@ -137,6 +137,10 @@ const AboutSkillLogo = styled.div`
       height: 40px;
       width: 40px;
     }
+
+    p {
+      font-size: var(--fs-xxs);
+    }
   }
 `;
 
